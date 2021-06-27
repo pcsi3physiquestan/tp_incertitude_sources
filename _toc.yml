@@ -1,0 +1,21 @@
+# In _toc.yml
+- file: tp_incertitude
+  numbered: true
+
+- part: Vocabulaire et étapes d'une manipulation
+  chapters:
+  - file: notebook/vocabulaire
+- part: Incertitudes
+  chapters:
+  - file: notebook/incertitude
+  - file: notebook/distribution
+  - file: notebook/sources
+  - file: notebook/indirecte
+- part: Rendre compte d'un résultat
+  chapters:
+  - file: notebook/rcgeneral
+- part: Exploiter les mesures
+  chapters:
+  - file: notebook/comparaison
+  - file: notebook/verifier_loi
+  - file: notebook/regression
