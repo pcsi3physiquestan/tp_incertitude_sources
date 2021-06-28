@@ -19,3 +19,6 @@
   - file: notebook/comparaison
   - file: notebook/verifier_loi
   - file: notebook/regression
+- part: Un exemple complet
+  chapters:
+  - file: notebook/exemple
