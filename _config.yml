@@ -1,7 +1,7 @@
 # in _config.yml
 #######################################################################################
 # Book settings
-title                       : "Etude de systèmes optiques"
+title                       : "Incertitudes de mesure"
 author                      : C. Lacpatia  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : ""  # A path to the book logo
@@ -60,6 +60,8 @@ html:
 latex:
   latex_engine              : xelatex  # one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
   use_jupyterbook_latex     : true # use jupyterbook-latex for pdf builds as default
+  latex_documents:
+    targetname: tp_incertitude.tex
 
 #######################################################################################
 # Launch button settings
