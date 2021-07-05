@@ -22,3 +22,7 @@
 - part: Un exemple complet
   chapters:
   - file: notebook/exemple
+- part: Pour aller plus loin
+  chapters:
+  - file: notebook/comp_reglin
+

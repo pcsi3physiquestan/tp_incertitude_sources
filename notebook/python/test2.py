@@ -158,9 +158,11 @@ import matplotlib.pyplot as plt
 import numpy.random as rd
 
 
-filename2 = "../../../../../approche_numeriques/donnees_exp/lambert.dat"  # Lien vers le fichier de données
+filename2 = "https://github.com/pcsi3physiquestan/donnees_exp/blob/main/sf6.dat?raw=true"  # Lien vers le fichier de données
+datas = np.loadtxt(filename2, skiprows=10, delimiter=",")  # Importation des données
+print(datas)
 
-A, C, uC = np.loadtxt(filename2, skiprows=1, delimiter=",", unpack=True)  # Importation des données
+A, C, uC = np.loadtxt(filename, skiprows=1, delimiter=",", usecols=(0, 1, 2))  # Importation des données
 
 """
 Détermination des moyennes et écart-type pour la simulation de Monte-Carlo puis création des N échantillons
@@ -179,128 +181,4 @@ ax.set_ylabel("C(10^-5 mol/L)")
 ax.errorbar(A, C, yerr=uC, marker='+', markersize=2, linestyle='')
 
 
-# plt.show()
-
-
-# Simulation des N tirages
-N = 1000000
-C_sim = rd.normal(C, uC, (N, n_mes))  # On génère directement un tableau où les colonnes correspondent à une mesure de C.
-
-# Réalisation des régression linéaire. polyfit peut faire les N régressions, tant que les abscisses ne changent pas
-# Ce qui est le cas ici
-# On doit par contre transposer le tableau des valeurs de C (inverser lignes et colonnes)
-p_sim = np.polyfit(A, C_sim.transpose(), 1)
-
-
-pente_m = np.mean(p_sim[0])
-ordo_m = np.mean(p_sim[1])
-pente_u = np.std(p_sim[0], ddof=1)
-ordo_u = np.std(p_sim[1], ddof=1)
-
-print("-----------------------------")
-print("Pente = {:.4f} +/- {:.4f} 10^-5 mol/L".format(pente_m, pente_u))
-print("Ordonnée à l'origine = {:.4f} +/- {:.4f} 10^-5 mol/L".format(ordo_m, ordo_u))
-print("-----------------------------")
-
-"""
-Histogrammes des valeurs simulées
-"""
-f, ax = plt.subplots(1, 2, figsize=(9, 6))
-f.suptitle("Distribution des valeurs simulées")
-
-# Pente
-ax[0].set_xlabel('Pente(1e-5 mol/L)')
-ax[0].hist(p_sim[0], bins='rice')
-
-# Pente
-ax[1].set_xlabel('Ordonnée(1e-5 mol/L)')
-ax[1].hist(p_sim[1], bins='rice')
-
-# plt.show()
-
-"""
-Vérification de l'ajustement par tracé graphique et calcul des écarts normalisés.
-"""
-f, ax = plt.subplots(2, 1, figsize=(9, 6), sharex='col')  # Tracé en partageant les abscisses sur les deux axes.
-f.suptitle("Ajustement linéaire")
-
-"""
-Tracé de la droite d'ajustment
-On va pousser plus loin l'analyse en estimant l'incertitude sur les points ajustés.
-On s'en servira dans les écarts normalisés notamment.
-"""
-
-C_adj_sim = np.zeros((N, n_mes))
-for i in range(n_mes):
-    C_adj_sim[:, i] = p_sim[0] * A[i] + p_sim[1]  # Calcul des N valeurs ajustées pour chaque distance
-
-
-C_adj_m = C_adj_sim.mean(axis=0)  # Moyenne sur les N valeurs (suivant les colonnes :  axis = 0)
-C_adj_u = C_adj_sim.std(ddof=1, axis=0)  # Moyenne sur les N valeurs (suivant les colonnes :  axis = 0)
-
-ax[0].set_xlabel("A")
-ax[0].set_ylabel("C(1e-5 mol/L)")
-ax[0].errorbar(A, C, yerr=uC, marker='+', markersize=2, linestyle='')
-ax[0].plot(A, C_adj_m, linestyle=':', linewidth=1, color='red')
-
-
-"""Tracé des écarts normalisés"""
-en = (C - C_adj_m) / (np.sqrt(uC ** 2 + C_adj_u ** 2))
-
-
-ax[1].set_xlabel("A")
-ax[1].set_ylabel("EN")
-ax[1].plot(A, en, linestyle='', marker='+', color='red')
-
-
-# plt.show()
-
-
-A_test = 0.523  # Distance en centimètre
-C_sim = p_sim[0] * A_test + p_sim[1]  # Simulation des concentrations
-
-C_m = np.mean(C_sim)  # Estimation de la concentration moyenne
-C_u = np.std(C_sim, ddof=1)  # Estimation de l'écart-type
-
-print("-----------------------------")
-print("Concentration estimée = ({:.3f} +/- {:.3f}) 10^-5 mol/L".format(C_m, C_u))
-print("-----------------------------")
-
-NA = 100
-A_courbe = np.linspace(min(A), max(A), NA)  # On trace les fuseaux pour la zone d'étude.
-
-"""
-On reprend la même méthode que précédemment mais pour chaque valeur de A. On va donc obtenir 
-un vecteur de valeurs pour C et son incertitude
-"""
-
-C_courbe_sim = np.zeros((NA, N))  # Tableau de 0 où on va stocker les valeurs simulées de C pour chaque absorbance
-for i in range(NA):
-    C_courbe_sim[i] = p_sim[0] * A_courbe[i] + p_sim[1]  # Simulation des concentrations pour chaque valeur de A
-
-C_courbe_m = np.mean(C_courbe_sim, axis=1)  # Estimation de la concentration moyenne pour chaque valeur de A (par colonne)
-C_courbe_u = np.std(C_courbe_sim, ddof=1, axis=1)  # Estimation de l'écart-type pour chaque valeur de A (par colonne=)
-
-C_mean = pente_m * A_courbe + ordo_m  # Droite ajustée
-C_min = C_courbe_m - C_courbe_u # Limite basse des valeurs données par l'incertitude
-C_max = C_courbe_m + C_courbe_u # Limite basse des valeurs données par l'incertitude
-
-"""
-Tracé graphique de la droite d'étalonnage avec le fuseau donnant les incertitudes
-"""
-f, ax = plt.subplots()
-f.suptitle("Courbe d'étalonnage pour dosage par absorbance")
-ax.set_xlabel("A")
-ax.set_ylabel("C(10^-5 mol/L)")
-
-ax.plot(A_courbe, C_mean, label="Droite étalon", color='black', linewidth=1)  # Droite d'ajustement
-
-# Première méthode : on trace les deux courbes hautes et basses
-ax.plot(A_courbe, C_min, color='blue', linewidth=.5)  # Cmes - u(C)
-ax.plot(A_courbe, C_max, color='blue', linewidth=.5)  # Cmes + u(C)
-
-# Deuxième méthode : la fonction fill_between, remplit de couleur l'espace entre 2 courbes
-ax.fill_between(A_courbe, C_min, C_max, color='cyan', linewidth=1, label="Incertitudes sur la concentration")
-
-ax.legend()
 plt.show()
