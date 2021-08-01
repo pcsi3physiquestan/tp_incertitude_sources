@@ -1,28 +1,32 @@
-# In _toc.yml
-- file: tp_incertitude
+format: jb-book
+root: tp_incertitude
+parts:
+- caption: "Vocabulaire et étapes d'une manipulation"
   numbered: true
-
-- part: Vocabulaire et étapes d'une manipulation
   chapters:
   - file: notebook/vocabulaire
-- part: Incertitudes
+- caption: Incertitudes
+  numbered: true
   chapters:
   - file: notebook/incertitude
   - file: notebook/distribution
   - file: notebook/sources
   - file: notebook/indirecte
-- part: Rendre compte d'un résultat
+- caption: "Rendre compte d'un résultat"
+  numbered: true
   chapters:
   - file: notebook/rcgeneral
-- part: Exploiter les mesures
+- caption: Exploiter les mesures
+  numbered: true
   chapters:
   - file: notebook/comparaison
   - file: notebook/verifier_loi
   - file: notebook/regression
-- part: Un exemple complet
+- caption: Un exemple complet
+  numbered: true
   chapters:
   - file: notebook/exemple
-- part: Pour aller plus loin
+- caption: Pour aller plus loin
+  numbered: true
   chapters:
   - file: notebook/comp_reglin
-
