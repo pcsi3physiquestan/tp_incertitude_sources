@@ -1,6 +1,10 @@
 format: jb-book
 root: tp_incertitude
 parts:
+- caption: "Points à retenir"
+  numbered: true
+  chapters:
+  - file: notebook/aretenir
 - caption: "Vocabulaire et étapes d'une manipulation"
   numbered: true
   chapters:
