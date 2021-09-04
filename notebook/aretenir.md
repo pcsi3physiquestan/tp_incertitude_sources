@@ -48,9 +48,10 @@ $$g_{mes} = \frac{1}{N}\sum\limits_{i=0}^{k}g_k$$
 
 * Incertitude :
 
-$$u(g) = \frac{1}{\sqrt{N}} \sigma_G = \sqrt{\frac{1}{N(N-1)} \sum\limits_{i=0}^{k}{(g_k - g_{mes})}^2}
+$$u(g) = \frac{1}{\sqrt{N}} \sigma_G = \sqrt{\frac{1}{N(N-1)} \sum\limits_{i=0}^{k}{(g_k - g_{mes})}^2}$$
 
 ## Méthode de Monte-Carlo
+
 Pour un mesurande $Y = f(X_i)$.
 1. Pour chaque mesurande directe $X_i$
     1. Pour chaque source d'incertitude estimée $u_i$ : Simulation de N tirages suivant la distribution estimée (__autour de 0__).
