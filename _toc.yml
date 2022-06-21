@@ -2,31 +2,18 @@ format: jb-book
 root: tp_incertitude
 
 chapters:
-- caption: "Points à retenir"
-  numbered: true
-  section:
   - file: notebook/aretenir
-- caption: "Vocabulaire et étapes d'une manipulation"
-  numbered: true
-  section:
   - file: notebook/vocabulaire
-- caption: Incertitudes
-  numbered: true
-  section:
   - file: notebook/incertitude
-  - file: notebook/distribution
-  - file: notebook/sources
-  - file: notebook/indirecte
-- caption: "Rendre compte d'un résultat"
-  numbered: true
-  section:
+    sections:
+    - file: notebook/distribution
+    - file: notebook/sources
+    - file: notebook/indirecte
   - file: notebook/rcgeneral
-- caption: Exploiter les mesures
-  numbered: true
-  section:
-  - file: notebook/comparaison
-  - file: notebook/verifier_loi
-  - file: notebook/regression
+    sections:
+    - file: notebook/comparaison
+    - file: notebook/verifier_loi
+    - file: notebook/regression
 # - caption: Un exemple complet
 #   numbered: true
 #   chapters:
