@@ -30,7 +30,7 @@ parts:
   numbered: true
   chapters:
   - file: notebook/exemple
-- caption: Pour aller plus loin
-  numbered: true
-  chapters:
-  - file: notebook/comp_reglin
+# - caption: Pour aller plus loin
+#   numbered: true
+#   chapters:
+#   - file: notebook/comp_reglin
