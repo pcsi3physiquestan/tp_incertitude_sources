@@ -1,7 +1,7 @@
 format: jb-book
 root: tp_incertitude
 
-chapters:
+sections:
   - file: notebook/aretenir
   - file: notebook/vocabulaire
   - file: notebook/incertitude
