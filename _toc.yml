@@ -3,6 +3,7 @@ root: tp_incertitude
 
 chapters:
 - file: notebook/aretenir
+- file: notebook/explication
   sections:
   - file: notebook/vocabulaire
   - file: notebook/incertitude
@@ -15,4 +16,4 @@ chapters:
     - file: notebook/comparaison
     - file: notebook/verifier_loi
     - file: notebook/regression
-  - file: notebook/exemple
+- file: notebook/exemple
