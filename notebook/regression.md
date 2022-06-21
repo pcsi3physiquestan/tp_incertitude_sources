@@ -49,7 +49,7 @@ Seul le point 2. n'a pas encore été développés. On va voir comment on s'y pr
 
 +++
 
-<!-- ## Régression linéaire : Méthode des moindres carrés.
+## Régression linéaire : Méthode des moindres carrés.
 
 Pour déterminer $a$, $b$, on va utiliser une méthode particulière appelée __méthode des moindres carrés__, cette méthode est démontrées comme étant l'une meilleures estimations de $a$ et $b$ dans de nombreux cas. Leurs incertitudes $u(a)$ et $u(b)$ seront déterminées par une méthode de Monte-Carlo (en répétant donc la méthode des moindres carrés avec des échantillons tirés aléatoirement à partir des distributions statistiques).
 
@@ -173,7 +173,7 @@ Les données expérimentales obtenues sont données dans le tableau ci-dessous
 ```{margin}
 On a gardé la cohérence de précision entre vaeur mesurée et incertitude. On a par contre gardé plus de chiffres pour l'incertitude de manière à ce qu'il y en ait au moins 2.
 ```
-
+<!-- 
 |Echantillon|t(ms)| 	v(cm/ms) |u(v)(cm/ms)|
 |:-|:-|-:|-:|
 |0| 	100| 	-0.0052| 	0.0211|
@@ -183,7 +183,7 @@ On a gardé la cohérence de précision entre vaeur mesurée et incertitude. On 
 |4| 	300| 	0.2290 | 	0.0089|
 |5| 	350| 	0.2612 | 	0.0091|
 |6| 	400| 	0.3170 | 	0.0032|
-|7| 	450| 	0.3449 | 	0.0188|
+|7| 	450| 	0.3449 | 	0.0188| -->
 
 * __Vérification sommaire__
 On commence par [représenter les points](chute_fig1) $(t_i,v_i)$ avec leurs incertitudes de mesure. On observe une tendance des points à s'aligner. On va donc poursuivre l'étude en recherchant des paramètres d'ajustement linéaire.
@@ -230,7 +230,7 @@ Résidus et écarts normalisés
 ```
 ````
 
-## Régression linéaire et incertitude.
+<!-- ## Régression linéaire et incertitude.
 
 L'estimation du champ de pesanteur précédent a peu d'utilité si on ne peut le comparer à une valeur attendue ($g = (9.81 \pm 0.10)\rm{m.s^{-2}}$). Mais pour réaliser une comparaison, il faut estimer l'incertitude sur $g_{experimental}$, donc sur la pente de la régression linéaire.
 
