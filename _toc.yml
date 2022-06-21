@@ -25,12 +25,8 @@ parts:
   chapters:
   - file: notebook/comparaison
   - file: notebook/verifier_loi
-  - file: notebook/regression
+  # - file: notebook/regression
 # - caption: Un exemple complet
 #   numbered: true
 #   chapters:
 #   - file: notebook/exemple
-# - caption: Pour aller plus loin
-#   numbered: true
-#   chapters:
-#   - file: notebook/comp_reglin
