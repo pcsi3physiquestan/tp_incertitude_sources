@@ -26,10 +26,10 @@ parts:
   - file: notebook/comparaison
   - file: notebook/verifier_loi
   - file: notebook/regression
-- caption: Un exemple complet
-  numbered: true
-  chapters:
-  - file: notebook/exemple
+# - caption: Un exemple complet
+#   numbered: true
+#   chapters:
+#   - file: notebook/exemple
 # - caption: Pour aller plus loin
 #   numbered: true
 #   chapters:
