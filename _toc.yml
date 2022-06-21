@@ -1,17 +1,18 @@
 format: jb-book
 root: tp_incertitude
 
-sections:
+chapters:
 - file: notebook/aretenir
-- file: notebook/vocabulaire
-- file: notebook/incertitude
   sections:
-  - file: notebook/distribution
-  - file: notebook/sources
-  - file: notebook/indirecte
-- file: notebook/rcgeneral
-  sections:
-  - file: notebook/comparaison
-  - file: notebook/verifier_loi
-  - file: notebook/regression
-- file: notebook/exemple
+  - file: notebook/vocabulaire
+  - file: notebook/incertitude
+    sections:
+    - file: notebook/distribution
+    - file: notebook/sources
+    - file: notebook/indirecte
+  - file: notebook/rcgeneral
+    sections:
+    - file: notebook/comparaison
+    - file: notebook/verifier_loi
+    - file: notebook/regression
+  - file: notebook/exemple
