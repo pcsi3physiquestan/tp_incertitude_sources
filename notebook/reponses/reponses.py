@@ -24,7 +24,7 @@ def etude_rc():
         temps = temps / 1000 # On passe les valeurs en millisecondes pour plus de lisibilité
 
     """ Tracé de l'histogramme des valeurs de tau"""
-    f = figure(1)  # On crée une figure
+    f = figure(figsize=(4,3))  # On crée une figure
     ax1 = f.add_subplot(1, 1, 1)  # Création des axes du graphiques
     ax1.hist(temps)  # Création de la courbe
 
@@ -45,7 +45,7 @@ def simul_u(N):
     y = fac * 1 / (s * sqrt(2 * pi)) * exp(-1 / 2 * (x - m) ** 2 / s ** 2)
     echs = random.normal(m, s, N)
 
-    f = figure(figsize=(9,6), dpi=100)
+    f = figure(figsize=(4,3), dpi=100)
     ax = f.add_subplot(1, 1, 1)
     ax.hist(echs, bins)
     ax.plot(x, y, color="black")
@@ -65,7 +65,7 @@ def gaussienne(m, s):
 
 
     # Tracé de la figure
-    f = figure(figsize=(9, 6), dpi=100)
+    f = figure(figsize=(9, 6))
     ax = f.add_subplot(1, 1, 1)
     ax.plot(x, y, color="blue", label="Loi gaussienne")
 
@@ -115,7 +115,7 @@ def combine_incert():
     st = std(echst, ddof=1)
     print("La distribution des mesures a pour moyenne {:.2f} V et pour écart-type {:.2f} V".format(mt, st))
 
-    f, ax = subplots(1, 3, figsize=(12, 4), dpi=100)
+    f, ax = subplots(1, 3, figsize=(12, 4))
     ax[0].hist(echs1, bins, density=True)
     ax[1].hist(echs2, bins, density=True)
     ax[2].hist(echst, bins, density=True)
@@ -137,7 +137,7 @@ def conc_soude():
     CHO = cHCl * VHCl / VHO
 
     # Tracé graphique
-    f, ax = subplots(1, 1, figsize=(12, 8), dpi=100)
+    f, ax = subplots(1, 1, figsize=(12, 8))
     f.suptitle("Simulation de Monte-Carlo sur le dosage de la soude")
     ax.set_xlabel('C0(mol/L)')
     ax.hist(CHO, bins, label="Concentration en soude")
